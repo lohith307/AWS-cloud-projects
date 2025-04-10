@@ -1,12 +1,12 @@
 # Secure Windows Virtual Machine Deployment with CMS on AWS
 
-## 📌 Objective
+##  Objective
 
 Deploy a **Windows Virtual Machine on AWS** and install a popular **Content Management System (CMS)** like **WordPress** or **Magento**, following **security best practices** to avoid any violations.
 
 ---
 
-## 🏗️ Architecture Components
+##  Architecture Components
 
 - **Amazon EC2 (Windows Server)**
 - **Amazon RDS (Optional)**
@@ -17,7 +17,7 @@ Deploy a **Windows Virtual Machine on AWS** and install a popular **Content Mana
 
 ---
 
-## 🖼️ Architecture Diagram
+##  Architecture Diagram
 
 ```
                    +----------------------------+
@@ -39,7 +39,7 @@ Deploy a **Windows Virtual Machine on AWS** and install a popular **Content Mana
 
 ---
 
-## 🚀 Step-by-Step Deployment
+##  Step-by-Step Deployment
 
 ### 1. Launch a Secure Windows EC2 Instance
 
@@ -180,13 +180,13 @@ Configure and start the agent with a config file for metrics/logs.
 
 ---
 
-## ✅ Summary
+##  Summary
 
 With this setup, you've securely deployed a Windows VM on AWS with a CMS, hardened the environment, and followed AWS security best practices.
 
 ---
 
-## 📁 Repository Suggestions
+##  Repository Suggestions
 
 - `docs/`: All configuration and setup screenshots
 - `scripts/`: Any setup automation scripts (PowerShell, SSM, etc.)
@@ -204,9 +204,4 @@ With this setup, you've securely deployed a Windows VM on AWS with a CMS, harden
 - [win-acme for Windows SSL](https://github.com/win-acme/win-acme)
 
 ---
-
-## 🏁 Author
-
-Created by: *Lohith k*\
-Date: *April 2025*
 
