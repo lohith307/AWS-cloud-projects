@@ -1,1 +1,5 @@
-
+# Change admin password manually after login
+# Run Windows Update
+sconfig
+# Enable Firewall (should be ON by default)
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
