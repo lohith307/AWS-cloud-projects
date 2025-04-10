@@ -1,5 +1,54 @@
+--Harden the EC2 Windows Instance--
+
 # Change admin password manually after login
 # Run Windows Update
 sconfig
 # Enable Firewall (should be ON by default)
 Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
+
+
+--Install and Configure IIS Web Server--
+
+# Open PowerShell as Administrator
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
+
+# Install PHP using WebPI
+Start-Process "C:\Program Files\Microsoft\Web Platform Installer\WebPlatformInstaller.exe"
+
+--Validate setup:--
+
+<?php
+phpinfo();
+?>
+
+
+--Set Up Database--
+
+CREATE DATABASE cms_db;
+CREATE USER 'cms_user'@'localhost' IDENTIFIED BY 'StrongPassword!';
+GRANT ALL PRIVILEGES ON cms_db.* TO 'cms_user'@'localhost';
+FLUSH PRIVILEGES;
+
+Install CMS (WordPress or Magento)
+
+Invoke-WebRequest -Uri https://wordpress.org/latest.zip -OutFile wordpress.zip
+Expand-Archive wordpress.zip -DestinationPath C:\inetpub\wwwroot\wordpress
+
+
+--Secure the Deployment--
+
+# Download win-acme for SSL
+Invoke-WebRequest -Uri https://github.com/win-acme/win-acme/releases/latest/download/win-acme.v2.1.20.1185.x64.trimmed.zip -OutFile win-acme.zip
+Expand-Archive win-acme.zip -DestinationPath C:\win-acme
+cd C:\win-acme
+wacs.exe
+
+--Disable directory listing:--
+
+Set-WebConfigurationProperty -Filter "/system.webServer/directoryBrowse" -Name "enabled" -Value "False" -PSPath "IIS:\"
+
+--Monitoring & Logging--
+
+# Install CloudWatch Agent
+Invoke-WebRequest https://s3.amazonaws.com/amazoncloudwatch-agent/windows/amd64/latest/amazon-cloudwatch-agent.msi -OutFile cloudwatch-agent.msi
+msiexec /i cloudwatch-agent.msi /qn
