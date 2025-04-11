@@ -43,6 +43,9 @@ Deploy a **Windows Virtual Machine on AWS** and install a popular **Content Mana
 
 ### 1. Launch a Secure Windows EC2 Instance
 
+![Image](https://github.com/user-attachments/assets/5b5dcfc7-a215-48ac-a15d-1eaadb209dd4)
+
+
 - Go to **EC2 > Launch Instance**
 - **AMI**: Microsoft Windows Server 2019/2022 Base
 - **Instance Type**: t3.medium or higher
